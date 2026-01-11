@@ -1,0 +1,323 @@
+:root {
+    --primary: #00e676;
+    --primary-variant: #00c853;
+    --secondary: #2979ff;
+    --bg-dark: #0f172a;
+    --bg-card: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --danger: #ff5252;
+    --warning: #ffd740;
+    --success: #69f0ae;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    padding-bottom: 80px;
+    /* Space for bottom nav */
+}
+
+/* --- Typography --- */
+h1,
+h2,
+h3 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+/* --- Header --- */
+header {
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand img {
+    height: 40px;
+    width: 40px;
+    border-radius: 8px;
+}
+
+.brand-text h1 {
+    font-size: 1.5rem;
+    /* Aumentado de 1.2rem */
+    color: #ffffff;
+    /* Blanco puro para que se vea bien */
+    text-shadow: 0 0 10px rgba(0, 230, 118, 0.3);
+    /* Brillo sutil */
+}
+
+.brand-text p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* --- Container --- */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* --- Cards/Sections --- */
+#settings-panel {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 5%;
+    right: 5%;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 1001;
+    border: 2px solid var(--primary);
+    /* Un borde para identificarlo */
+}
+
+.section-title {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* --- Tabs --- */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Bottom Navigation --- */
+nav.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--bg-card);
+    display: flex;
+    justify-content: space-around;
+    padding: 0.75rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    transition: var(--transition);
+}
+
+.nav-item i {
+    font-size: 1.4rem;
+    margin-bottom: 4px;
+}
+
+.nav-item.active {
+    color: var(--primary);
+}
+
+/* --- Forms & Inputs --- */
+.input-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    border: 1px solid #334155;
+    background: #0f172a;
+    color: white;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(0, 230, 118, 0.2);
+}
+
+.btn {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 12px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: #000;
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+    background: var(--primary-variant);
+}
+
+.btn-secondary {
+    background: #25D366;
+    color: white;
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.btn-secondary:active {
+    transform: scale(0.95);
+    background: #128C7E;
+}
+
+.btn-secondary i {
+    font-size: 1.3rem;
+}
+
+/* --- Expiry Items --- */
+.item-list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.expiry-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border-left: 4px solid var(--text-muted);
+}
+
+.expiry-item.urgent {
+    border-left-color: var(--danger);
+}
+
+.expiry-item.warning {
+    border-left-color: var(--warning);
+}
+
+.expiry-item.safe {
+    border-left-color: var(--success);
+}
+
+.item-info h4 {
+    font-size: 1rem;
+    margin-bottom: 2px;
+}
+
+.item-info p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.delete-btn {
+    background: transparent;
+    color: var(--danger);
+    border: none;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* --- Floating Button --- */
+.fab {
+    position: fixed;
+    right: 20px;
+    bottom: 90px;
+    width: 56px;
+    height: 56px;
+    background: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 230, 118, 0.4);
+    cursor: pointer;
+    z-index: 99;
+}
+
+/* Custom Checkbox (Quiebres) */
+.check-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0.75rem;
+}
+
+.check-item input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+}
+
+/* Utility */
+.mt-2 {
+    margin-top: 1rem;
+}
+
+.text-center {
+    text-align: center;
+}
